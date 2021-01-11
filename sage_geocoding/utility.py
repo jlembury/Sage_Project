@@ -3,7 +3,7 @@
 # GEOG-582 Final Project
 
 # import statements
-from .point import Point
+from point import Point
 
 import folium
 import geopandas as gpd

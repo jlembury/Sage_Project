@@ -3,7 +3,7 @@
 # GEOG-582 Final Project
 
 # import statements
-from .my_tokens import arcgis_token, bing_token, google_token
+from my_tokens import arcgis_token, bing_token, google_token
 
 from geopy import distance
 from geopy.geocoders import Nominatim

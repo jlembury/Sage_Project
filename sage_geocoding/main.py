@@ -6,7 +6,7 @@
 import os
 import pandas as pd
 
-from geocode_582final_embury.libs.utility import create_address_table, \
+from utility import create_address_table, \
     create_points_known_coords, \
     geocode_address_table, \
     output_geocode_results_shp, \
