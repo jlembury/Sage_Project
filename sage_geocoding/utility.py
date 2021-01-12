@@ -1,6 +1,5 @@
+# The Sage Project
 # Jessica Embury
-# RedID 823859615
-# GEOG-582 Final Project
 
 # import statements
 from point import Point

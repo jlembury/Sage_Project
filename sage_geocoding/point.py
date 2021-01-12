@@ -1,6 +1,5 @@
+# The Sage Project
 # Jessica Embury
-# RedID 823859615
-# GEOG-582 Final Project
 
 # import statements
 from my_tokens import arcgis_token, bing_token, google_token
