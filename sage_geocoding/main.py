@@ -56,7 +56,6 @@ def main():
     # available geocoding services
     gc_services = ['nominatim', 'google', 'arcgis', 'bing']
 
-    '''
     # create the address table with unique id numbers for each address (id will stay same for all geocoders)
     addr = create_address_table(csv_in)
 
@@ -80,19 +79,15 @@ def main():
 
     # create distance table
     dist = create_distance_table(addr, dist_out)
-    '''
 
-    dist = pd.read_csv('./output/central/distance_table.csv')
+    # dist = pd.read_csv('./output/central/distance_table.csv')
 
-    '''
     # calculate distance statistics
     calc_distance_statistics(dist, stats_out)
-    '''
 
     # create box plot
     plot_result_distances(dist, plot_out)
 
-    '''
     # create maps comparing known coordinates versus geocoded results: nom, goog, arc, bing
     map_geocoding_results(map_out.format(gc_services[0]), ['orange', 'darkpurple'], ['cloud', 'star'], shp_out.format(gc_services[0]), shp_out.format('known'))
     map_geocoding_results(map_out.format(gc_services[1]), ['green', 'darkpurple'], ['flash', 'star'], shp_out.format(gc_services[0]), shp_out.format('known'))
@@ -105,7 +100,7 @@ def main():
     create_bubble_map(shp_out.format('known'), dist, 'Google', 'green', map_out.format('google_bubble'))
     create_bubble_map(shp_out.format('known'), dist, 'ArcGIS', 'red', map_out.format('arcgis_bubble'))
     create_bubble_map(shp_out.format('known'), dist, 'Bing', 'blue', map_out.format('bing_bubble'))
-    '''
+    
 
 if __name__ == '__main__':
     main()
