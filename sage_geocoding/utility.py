@@ -283,11 +283,23 @@ def calc_distance_statistics(distance_table, csv_out):
     """
     # get column names containing distances
     cols = list(distance_table.columns)
-    cols.remove('name')
-    cols.remove('address')
+    cols.remove('Name ')
+    cols.remove('Address')
     cols.remove('id_num')
-    cols.remove('latitude')
-    cols.remove('longitude')
+    cols.remove('Latitude')
+    cols.remove('Longitude')
+    cols.remove('Source ')
+    cols.remove('RP Name ')
+    cols.remove('RP Type ')
+    cols.remove('Record Date ')
+    cols.remove('Flag Active ')
+    cols.remove('Flag Owner ')
+    cols.remove('rv_method ')
+    cols.remove('Notes ')
+    cols.remove('Extra_Lat')
+    cols.remove('Extra_Long ')
+    cols.remove('Extra RP data Name  ')
+    cols.remove('Extra RP data Type ')
 
     # create empty statistics dataframe
     table = pd.DataFrame(columns={'comparison', 'percent_match', 'mean_distance', 'std_dev', 'max_distance'})
@@ -317,11 +329,23 @@ def plot_result_distances(distance_table, plot_out=None):
     # https://www.machinelearningplus.com/plots/top-50-matplotlib-visualizations-the-master-plots-python/
     # get column names containing distances
     cols = list(distance_table.columns)
-    cols.remove('name')
-    cols.remove('address')
+    cols.remove('Name ')
+    cols.remove('Address')
     cols.remove('id_num')
-    cols.remove('latitude')
-    cols.remove('longitude')
+    cols.remove('Latitude')
+    cols.remove('Longitude')
+    cols.remove('Source ')
+    cols.remove('RP Name ')
+    cols.remove('RP Type ')
+    cols.remove('Record Date ')
+    cols.remove('Flag Active ')
+    cols.remove('Flag Owner ')
+    cols.remove('rv_method ')
+    cols.remove('Notes ')
+    cols.remove('Extra_Lat')
+    cols.remove('Extra_Long ')
+    cols.remove('Extra RP data Name  ')
+    cols.remove('Extra RP data Type ')
 
     # create new table with all distances in one column rather than a column for each service
     table = pd.DataFrame(columns={'id_num', 'Geocoding Service', 'Distance (Feet)'})
@@ -340,7 +364,7 @@ def plot_result_distances(distance_table, plot_out=None):
 
     # Decoration
     plt.title('Distance Between Geocoded Results and Known Locations (Feet)', fontsize=14)
-    plt.ylim(0, 1010)
+    plt.ylim(0, 7000)
     # plt.show()
 
     # save box plot
@@ -411,9 +435,9 @@ def create_bubble_map(shp_in, distance_table, bubble_size_parameter, color, map_
         # black marker for null distance (geocode failed)
         if gdf['null_flag'][i]:
             folium.Circle(
-                location=[gdf.latitude_x[i], gdf.longitude_x[i]],
-                popup=gdf.name_x[i],
-                radius=250,
+                location=[gdf.latitude[i], gdf.longitude[i]],
+                popup=gdf.name[i],
+                radius=200,
                 color='black',
                 fill=True,
                 fill_color='black'
@@ -421,9 +445,9 @@ def create_bubble_map(shp_in, distance_table, bubble_size_parameter, color, map_
         # if geocode successful, graduated point with distance to known location determining radius
         else:
             folium.Circle(
-                location=[gdf.latitude_x[i], gdf.longitude_x[i]],
-                popup=gdf.name_x[i],
-                radius=gdf[bubble_size_parameter][i],
+                location=[gdf.latitude[i], gdf.longitude[i]],
+                popup=gdf.name[i],
+                radius=gdf[bubble_size_parameter][i]*0.2,
                 color=color,
                 fill=True,
                 fill_color=color
